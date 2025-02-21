@@ -1,0 +1,23 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','--build-arg', 'PROJECT_ID=copper-index-447603-b3', '--build-arg', 'BUCKET_NAME=ai-image-cloudfn','-t','us-east1-docker.pkg.dev/$PROJECT_ID/serverless-apps/multimodal-app:tag1','.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','us-east1-docker.pkg.dev/$PROJECT_ID/serverless-apps/multimodal-app:tag1']
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'e2e-multimodal-app'
+  - '--image'
+  - 'us-east1-docker.pkg/$PROJECT_ID/erverless-apps/multimodal-app:tag1'
+  - '--region'
+  - 'us-east1'
+  - '--allow-unauthenticated'
+images:
+- 'us-east1-docker.pkg.dev/$PROJECT_ID/serverless-apps/multimodal-app:tag1'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

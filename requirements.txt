@@ -1,0 +1,16 @@
+fastapi[standard]>=0.113.0,<0.114.0
+pydantic>=2.7.0,<3.0.0
+pandas
+google-cloud
+google-cloud-storage
+protobuf
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+uvicorn
+gunicorn
+pytest
+httpx
+google-auth
+google-cloud-secret-manager
+

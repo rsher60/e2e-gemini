@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>File Upload Form</title>
+</head>
+<body>
+
+<h1>Upload a JPEG or PNG File</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="file">Select a file:</label>
+  <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png"><br><br>
+  <input type="submit" value="Upload">
+</form>
+
+</body>
+</html>
